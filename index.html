@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Sanctuary | Yoga, Meditation & Health Tips</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- General Styling & Variables --- */
+        :root {
+            --primary-color: #4A90E2;  /* Calming Blue */
+            --secondary-color: #7ED321; /* Vibrant Green */
+            --text-color: #333333;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            background: var(--white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.pexels.com/photos/317155/pexels-photo-317155.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-btn {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .hero-btn:hover {
+            background-color: #6cbf1c;
+            transform: translateY(-3px);
+        }
+
+        /* --- Health Section --- */
+        .health-section {
+            background: var(--light-gray);
+        }
+
+        .health-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .health-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .health-card .icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .health-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* --- Yoga & Meditation Sections --- */
+        .pose-grid, .meditation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .pose-card, .meditation-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pose-card:hover, .meditation-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pose-card img, .meditation-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content .instructions {
+            flex-grow: 1;
+        }
+
+        .card-content h3 {
+            margin-bottom: 15px;
+        }
+        
+        .card-content ul {
+            list-style-position: inside;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+        
+        .card-content li {
+            margin-bottom: 10px;
+        }
+        
+        .timer-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        /* --- Timer Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .timer-modal {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        
+        .modal-overlay.visible .timer-modal {
+            transform: scale(1);
+        }
+
+        #timer-display {
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+        
+        #timer-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        #close-timer-btn {
+            background: #ccc;
+            color: var(--text-color);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        /* --- Motivational Thoughts Section --- */
+        .thoughts-section {
+            background: var(--white);
+        }
+        
+        .thought-card {
+            background: var(--light-gray);
+            border-left: 5px solid var(--primary-color);
+            padding: 30px;
+            margin: 0 auto 20px;
+            max-width: 800px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .thought-card p {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .thought-card .author {
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: right;
+        }
+
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">🌿 Wellness Sanctuary</a>
+            <ul class="nav-links">
+                <li><a href="#health">Stay Healthy</a></li>
+                <li><a href="#yoga">Yoga Poses</a></li>
+                <li><a href="#meditation">Meditation</a></li>
+                <li><a href="#thoughts">Thoughts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Find Your Inner Peace</h1>
+            <p>Your journey to a healthier, more mindful life starts here. Explore guided meditations, yoga poses, and practical tips for a balanced mind and body.</p>
+            <a href="#health" class="hero-btn">Start Your Journey</a>
+        </div>
+    </section>
+
+    <section id="health" class="health-section">
+        <div class="container">
+            <h2>How to Stay Healthy</h2>
+            <div class="health-grid">
+                <div class="health-card">
+                    <div class="icon">🥗</div>
+                    <h3>Eat a Balanced Diet</h3>
+                    <p>Incorporate a variety of fruits, vegetables, lean proteins, and whole grains into your meals for sustained energy and a strong immune system.</p>
+                </div>
+                <div class="health-card">
+                    <div class="icon">💧</div>
+                    <h3>Stay Hydrated</h3>
+                    <p>Drink at least 8 glasses of water daily. Proper hydration is essential for digestion, circulation, and maintaining healthy skin.</p>
+                </div>
+                <div class="health-card">
+                    <div class="icon">🏃‍♀️</div>
+                    <h3>Move Your Body</h3>
+                    <p>Aim for 30 minutes of moderate activity most days. Regular exercise improves mood, reduces stress, and boosts overall health.</p>
+                </div>
+                <div class="health-card">
+                    <div class="icon">😴</div>
+                    <h3>Get Quality Sleep</h3>
+                    <p>Strive for 7-9 hours of quality sleep per night. It helps regulate mood, improves brain function, and allows your body to repair itself.</p>
+                </div>
+                <div class="health-card">
+                    <div class="icon">🧘‍♂️</div>
+                    <h3>Manage Stress</h3>
+                    <p>Practice mindfulness, meditation, or deep breathing exercises. Taking time to relax is crucial for your mental and physical well-being.</p>
+                </div>
+                <div class="health-card">
+                    <div class="icon">🍎</div>
+                    <h3>Practice Mindful Eating</h3>
+                    <p>Pay attention to your food and how you feel while eating. Eating slowly and without distraction can improve digestion and satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="yoga">
+        <div class="container">
+            <h2>Beginner Yoga Poses</h2>
+            <div class="pose-grid">
+                <div class="pose-card">
+                    <img src="down.jpg.jpeg" alt="Woman doing Downward-Facing Dog yoga pose">
+                    <div class="card-content">
+                        <h3>Downward-Facing Dog</h3>
+                        <p>A full-body stretch that calms the mind and energizes the body.</p>
+                        <div class="instructions"><h4>Instructions:</h4><ul><li>Start on your hands and knees.</li><li>Tuck your toes, lift your hips up and back, forming an inverted 'V'.</li><li>Keep your head between your upper arms.</li></ul></div>
+                        <button class="timer-btn" data-duration="30" data-title="Downward Dog">Start 30s Timer</button>
+                    </div>
+                </div>
+                <div class="pose-card">
+                    <img src="tre.jpeg.jpeg" alt="Woman doing Tree Pose yoga pose">
+                    <div class="card-content">
+                        <h3>Tree Pose</h3>
+                        <p>Improves balance, focus, and strengthens your legs and core.</p>
+                        <div class="instructions"><h4>Instructions:</h4><ul><li>Stand tall and shift your weight to your right foot.</li><li>Place your left foot on your inner right thigh or calf (avoid the knee).</li><li>Bring your hands together in front of your chest.</li></ul></div>
+                        <button class="timer-btn" data-duration="45" data-title="Tree Pose">Start 45s Timer</button>
+                    </div>
+                </div>
+                <div class="pose-card">
+                    <img src="warrior.jpg.jpeg" alt="Woman doing Warrior II yoga pose">
+                    <div class="card-content">
+                        <h3>Warrior II</h3>
+                        <p>Builds strength and confidence, while stretching your hips and shoulders.</p>
+                        <div class="instructions"><h4>Instructions:</h4><ul><li>Step your feet wide apart.</li><li>Turn your right foot out 90 degrees and bend your right knee.</li><li>Extend your arms parallel to the floor and gaze forward.</li></ul></div>
+                        <button class="timer-btn" data-duration="45" data-title="Warrior II">Start 45s Timer</button>
+                    </div>
+                </div>
+                <div class="pose-card">
+                    <img src="cat.jpg.jpeg" alt="Woman doing Cat-Cow Stretch">
+                    <div class="card-content">
+                        <h3>Cat-Cow Stretch</h3>
+                        <p>Warms the spine and relieves tension in the back and neck.</p>
+                        <div class="instructions"><h4>Instructions:</h4><ul><li>Start on your hands and knees in a tabletop position.</li><li>Inhale as you drop your belly and look up (Cow).</li><li>Exhale as you round your spine and tuck your chin (Cat).</li></ul></div>
+                        <button class="timer-btn" data-duration="60" data-title="Cat-Cow Stretch">Start 60s Timer</button>
+                    </div>
+                </div>
+                <div class="pose-card">
+                    <img src="cobra.jpg.jpeg" alt="Woman doing Cobra Pose">
+                    <div class="card-content">
+                        <h3>Cobra Pose</h3>
+                        <p>Strengthens the spine and opens the chest and shoulders.</p>
+                        <div class="instructions"><h4>Instructions:</h4><ul><li>Lie on your stomach with your hands under your shoulders.</li><li>Press through your hands to lift your chest off the floor.</li><li>Keep your hips on the floor and your shoulders relaxed.</li></ul></div>
+                        <button class="timer-btn" data-duration="30" data-title="Cobra Pose">Start 30s Timer</button>
+                    </div>
+                </div>
+                <div class="pose-card">
+                    <img src="child.jpg.jpeg" alt="Woman in Child's Pose">
+                    <div class="card-content">
+                        <h3>Child's Pose</h3>
+                        <p>A gentle resting pose that helps to relieve stress and tension.</p>
+                        <div class="instructions"><h4>Instructions:</h4><ul><li>Kneel on the floor and sit back on your heels.</li><li>Fold forward, resting your forehead on the floor.</li><li>Let your arms rest alongside your body, palms up.</li></ul></div>
+                        <button class="timer-btn" data-duration="60" data-title="Child's Pose">Start 60s Timer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="meditation" class="health-section">
+        <div class="container">
+            <h2>Guided Meditation</h2>
+            <div class="meditation-grid">
+                <div class="meditation-card">
+                    <img src="https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Peaceful sunrise over a lake">
+                    <div class="card-content">
+                        <h3>Morning Mindfulness (5 Min)</h3>
+                        <p>Find a quiet space. On your phone, play your favorite calming song. Close your eyes and focus on your breath to set a positive intention for the day.</p>
+                    </div>
+                </div>
+                <div class="meditation-card">
+                    <img src="https://images.pexels.com/photos/933054/pexels-photo-933054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Calm forest with sunlight">
+                    <div class="card-content">
+                        <h3>Stress Relief Breath (10 Min)</h3>
+                        <p>Feeling overwhelmed? Choose a soothing track on your phone. Follow a simple box breathing pattern: inhale for 4 counts, hold for 4, exhale for 4, and hold for 4.</p>
+                    </div>
+                </div>
+                <div class="meditation-card">
+                    <img src="https://images.pexels.com/photos/413195/pexels-photo-413195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Starry night sky">
+                    <div class="card-content">
+                        <h3>Sleep Meditation (15 Min)</h3>
+                        <p>To prepare for deep sleep, listen to calming ambient sounds on your phone. Quiet your mind, relax your body, and allow yourself to drift off peacefully.</p>
+                    </div>
+                </div>
+                <div class="meditation-card">
+                    <img src="https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="A focused person working at a desk">
+                    <div class="card-content">
+                        <h3>Focus Boost (5 Min)</h3>
+                        <p>Before an important task, put on an instrumental track. Close your eyes and visualize success. This short break can significantly sharpen your concentration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="thoughts" class="thoughts-section">
+        <div class="container">
+            <h2>A Thought for the Day</h2>
+            <div class="thought-card">
+                <p>"The greatest wealth is health."</p>
+                <div class="author">- Virgil</div>
+            </div>
+            <div class="thought-card">
+                <p>"A calm mind brings inner strength and self-confidence, so that's very important for good health."</p>
+                <div class="author">- Dalai Lama</div>
+            </div>
+            <div class="thought-card">
+                <p>"The journey of a thousand miles begins with a single step."</p>
+                <div class="author">- Lao Tzu</div>
+                </div>
+                <div class="thought-card">
+                <p>"The secret to getting ahead is getting started."</p>
+                <div class="author">- Mark Twain</div>
+            </div>
+            <div class="thought-card">
+                <p>"Health is a state of body. Wellness is a state of being."</p>
+                <div class="author">- J. Stanford</div>
+            </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="modal-overlay" id="timer-modal">
+        <div class="timer-modal">
+            <h3 id="timer-title">Pose Timer</h3>
+            <div id="timer-display">00:00</div>
+            <button id="close-timer-btn">Close</button>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Wellness Sanctuary. Find your balance.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Timer Functionality ---
+            const timerModal = document.getElementById('timer-modal');
+            const timerDisplay = document.getElementById('timer-display');
+            const timerTitle = document.getElementById('timer-title');
+            const closeTimerBtn = document.getElementById('close-timer-btn');
+            let countdown;
+
+            function startTimer(duration, title) {
+                timerTitle.textContent = title;
+                let timer = duration;
+                
+                function updateDisplay() {
+                    let minutes = Math.floor(timer / 60);
+                    let seconds = timer % 60;
+                    minutes = minutes < 10 ? '0' + minutes : minutes;
+                    seconds = seconds < 10 ? '0' + seconds : seconds;
+                    timerDisplay.textContent = `${minutes}:${seconds}`;
+                    if (--timer < 0) {
+                        clearInterval(countdown);
+                        timerDisplay.textContent = "Done!";
+                        // Optional: Play a sound
+                        try {
+                           new Audio('https://www.soundjay.com/buttons/sounds/button-16.mp3').play();
+                        } catch(e) {
+                           console.error("Could not play sound:", e);
+                        }
+                    }
+                }
+                
+                updateDisplay(); // Initial display
+                countdown = setInterval(updateDisplay, 1000);
+                timerModal.classList.add('visible');
+            }
+
+            document.querySelectorAll('.timer-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const duration = parseInt(button.dataset.duration);
+                    const title = button.dataset.title;
+                    clearInterval(countdown); // Clear any previous timer
+                    startTimer(duration, title);
+                });
+            });
+
+            function closeTimer() {
+                 clearInterval(countdown);
+                 timerModal.classList.remove('visible');
+            }
+
+            closeTimerBtn.addEventListener('click', closeTimer);
+            timerModal.addEventListener('click', (e) => {
+                 if (e.target === timerModal) {
+                    closeTimer();
+                 }
+            });
+        });
+    </script>
+</body>
+</html>
